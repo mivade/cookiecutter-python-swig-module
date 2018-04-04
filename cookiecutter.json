@@ -1,0 +1,8 @@
+{
+  "repo_name": "extmodule",
+  "project_name": "extmodule",
+  "author": "T. H. Example",
+  "version": "1.0.0",
+  "description": "A Python/SWIG extension module",
+  "long_description": "A Python/SWIG extension module"
+}
