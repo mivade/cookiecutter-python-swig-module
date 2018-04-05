@@ -1,4 +1,7 @@
-from setuptools import Extension, setup
+import os.path
+from setuptools import Extension, find_packages, setup
+from setuptools.command.build_py import build_py
+from setuptools.command.install import install
 import sys
 
 
@@ -22,10 +25,13 @@ def get_compile_args():
 
 extensions = [
     Extension(
-        "_{{ cookiecutter.project_name }}",
+        "{{ cookiecutter.project_name }}._{{ cookiecutter.project_name }}",
         sources=[
-            "src/{{ cookiecutter.project_name }}.i",
-            "src/{{ cookiecutter.project_name }}.cpp",
+            os.path.join("{{ cookiecutter.project_name }}", filename)
+            for filename in [
+                "{{ cookiecutter.project_name }}.i",
+                "{{ cookiecutter.project_name }}.cpp",
+            ]
         ],
         swig_opts=["-c++"],
         include_dirs=get_include_dirs(),
@@ -40,4 +46,5 @@ setup(
     description="{{ cookiecutter.description }}",
     long_description="{{ cookiecutter.long_description }}",
     ext_modules=extensions,
+    packages=find_packages(where="{{ cookiecutter.project_name }}"),
 )
