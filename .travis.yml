@@ -1,5 +1,4 @@
 language: python
-
 python:
   - "3.4"
   - "3.5"
@@ -7,9 +6,17 @@ python:
   - "3.6-dev"  # 3.6 development branch
   - "3.7-dev"  # 3.7 development branch
 
+addons:
+  apt:
+    packages:
+      - swig
+
 install:
   - pip install pipenv
   - pipenv install -d
 
 script:
   - pipenv run make test
+
+notifications:
+  email: false
