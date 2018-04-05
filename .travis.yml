@@ -8,6 +8,10 @@ python:
 
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-6
     packages:
       - swig
 
